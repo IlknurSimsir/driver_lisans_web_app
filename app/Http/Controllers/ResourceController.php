@@ -80,4 +80,14 @@ class ResourceController extends Controller
 
         return redirect()->back()->with('success', 'Aktiflik durumu başarıyla güncellendi!');
     }
+    public function download($filename)
+    {
+        $file_path = storage_path('app/public/files/' . $filename);
+
+        if (file_exists($file_path)) {
+            return response()->download($file_path);
+        } else {
+            return redirect()->back()->with('error', 'Dosya bulunamadı!');
+        }
+    }
 }

@@ -36,6 +36,7 @@
                                     <th scope="col">Dersler</th>
                                     <th scope="col">Düzenle</th>
                                     <th scope="col">Sil</th>
+                                    <th scope="col">İndir</th>
                                     <th scope="col">Aktiflik</th>
                                 </tr>
                             </thead>
@@ -64,6 +65,9 @@
                                             data-bs-toggle="modal" data-bs-target="#deleteModal">
                                             Sil
                                         </button>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('download', basename($data->resource)) }}">{{ $data->title }} dosyasını indir</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('resource.updateActivity', $data->id) }}" method="POST">

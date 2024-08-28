@@ -30,6 +30,10 @@
                         <li class="list-group-item d-flex align-items-center" style="width: 50%;">
                             @if ($key === 'logo')
                             <input type="text" class="form-control me-2" value="{{ $organisation->logo ? basename($organisation->logo) : 'Logo yüklenmedi' }}" readonly>
+                            @elseif($key === 'image')
+                            <input type="text" class="form-control me-2" value="{{ $organisation->image ? basename($organisation->image) : 'Fotoğraf yüklenmedi' }}" readonly>
+                            @elseif($key === 'banner_img')
+                            <input type="text" class="form-control me-2" value="{{ $organisation->banner_img ? basename($organisation->banner_img) : 'Banner yüklenmedi' }}" readonly>
                             @else
                             <input type="text" id="input-{{ $key }}" class="form-control" value="{{ $organisation->$key }}" readonly>
                             @endif
@@ -37,12 +41,30 @@
                         <li class="list-group-item d-flex justify-content-center align-items-center p-0" style="width: 10%;">
                             @if ($key === 'logo')
                             <!-- Dosya yükleme ve kaydetme işlemleri için tek bir buton -->
+                            <!-- Logo yükleme formu -->
                             <form action="/organisation/update/logo/{{ $organisation->id }}" method="POST" enctype="multipart/form-data" class="d-flex align-items-center">
                                 @csrf
                                 @method('PUT')
-                                <input type="file" name="logo" accept=".png,.jpg,.jpeg,.csv" class="form-control d-none" id="logo-file-{{ $organisation->id }}" onchange="this.form.submit()">
+                                <input type="file" name="logo" accept=".png,.jpg,.jpeg" class="form-control d-none" id="logo-file-{{ $organisation->id }}" onchange="this.form.submit()">
                                 <label for="logo-file-{{ $organisation->id }}" class="btn btn-primary btn-sm mb-0">Yükle</label>
                             </form>
+                            @elseif ($key === 'banner_img')
+                            <!-- Banner img yükleme formu -->
+                            <form action="/organisation/update/banner_img/{{ $organisation->id }}" method="POST" enctype="multipart/form-data" class="d-flex align-items-center">
+                                @csrf
+                                @method('PUT')
+                                <input type="file" name="banner_img" accept=".png,.jpg,.jpeg" class="form-control d-none" id="banner_img-file-{{ $organisation->id }}" onchange="this.form.submit()">
+                                <label for="banner_img-file-{{ $organisation->id }}" class="btn btn-primary btn-sm mb-0">Yükle</label>
+                            </form>
+                            @elseif ($key === 'image')
+                            <!-- Image yükleme formu -->
+                            <form action="/organisation/update/image/{{ $organisation->id }}" method="POST" enctype="multipart/form-data" class="d-flex align-items-center">
+                                @csrf
+                                @method('PUT')
+                                <input type="file" name="image" accept=".png,.jpg,.jpeg" class="form-control d-none" id="image-file-{{ $organisation->id }}" onchange="this.form.submit()">
+                                <label for="image-file-{{ $organisation->id }}" class="btn btn-primary btn-sm mb-0">Yükle</label>
+                            </form>
+
                             @else
                             <button type="button" id="edit-btn-{{ $key }}" class="btn btn-primary btn-sm" onclick="enableEdit('{{ $key }}')">Düzenle</button>
                             <button type="button" id="save-btn-{{ $key }}" class="btn btn-success btn-sm d-none" onclick="saveEdit('{{ $key }}', '{{ $organisation->id }}')">Kaydet</button>

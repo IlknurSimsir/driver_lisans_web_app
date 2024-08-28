@@ -29,10 +29,17 @@
                     <div class="mb-3">
                         <label for="choice_4" class="form-label">Seçenek 4</label>
                         <input type="text" class="form-control" id="editChoice_4" name="choice_4" required>
+
                     </div>
                     <div class="mb-3">
                         <label for="correct_answer" class="form-label">Doğru Cevap</label>
-                        <input type="text" class="form-control" id="editCorrect_answer" name="correct_answer" required>
+                        <select class="form-select" id="editCorrect_answer" name="correct_answer" required>
+                            <option value="">Doğru cevabı seçin</option>
+                            <option value="choice_1">Seçenek 1</option>
+                            <option value="choice_2">Seçenek 2</option>
+                            <option value="choice_3">Seçenek 3</option>
+                            <option value="choice_4">Seçenek 4</option>
+                        </select>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Kaydet</button>

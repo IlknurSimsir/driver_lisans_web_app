@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('address');
             $table->string('wp_contact');
             $table->string('logo');
+            $table->string('banner_img');
+            $table->string('image');
             $table->string('instagram');
             $table->string('facebook');
             $table->string('youtube');

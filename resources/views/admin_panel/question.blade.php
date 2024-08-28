@@ -25,11 +25,18 @@
             <div class="row" style="min-height: 100vh;">
 
                 <div class="row justify-content-center align-items-start p-3">
+                    @php $num = 1; @endphp
                     @foreach($questions as $data)
-                    <div class="col-md-5 col-sm-11 col-lg-5">
-                        <div class="bg-light rounded h-100 p-4 m-2 text-center">
 
-                            <h5 class="mb-1">{{$data->question_text}}</h5>
+                    <div class="col-md-5 col-sm-11 col-lg-5">
+                        <div class="bg-light rounded h-100 p-4 m-2">
+
+                            <h5 class="mb-1">{{ $num }}. {{$data->question_text}}</h5>
+                            <p class="mb-1">A- {{$data->choice_1}}</p>
+                            <p class="mb-1">B- {{$data->choice_2}}</p>
+                            <p class="mb-1">C- {{$data->choice_3}}</p>
+
+                            <p class="mb-1">D- {{$data->choice_4}}</p>
 
                             <div class="row d-flex justify-content-end align-items-end">
 
@@ -48,7 +55,10 @@
                             </div>
                         </div>
                     </div>
+
+                    @php $num++; @endphp
                     @endforeach
+
                 </div>
             </div>
             <!-- Footer Start -->

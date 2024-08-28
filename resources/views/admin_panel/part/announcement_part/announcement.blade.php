@@ -24,13 +24,13 @@ $announcementLimit = $announcementLimit ?? 5;
             <table id="example" class="display">
                 <!-- announcement title start -->
                 <thead>
-                    <tr class="text-dark">
+                    <tr class="text-dark ">
                         <th scope="col">Duyuru</th>
-                        <th scope="col">Tarih</th>
                         <th scope="col">Tür</th>
                         <th scope="col">Düzenle</th>
                         <th scope="col">Sil</th>
                         <th scope="col">Aktiflik</th>
+                        <th scope="col">Tarih</th>
                     </tr>
                 </thead>
                 <!-- announcement title end -->
@@ -39,12 +39,9 @@ $announcementLimit = $announcementLimit ?? 5;
                     @foreach ($announcement->when($limitAnnouncements, function($query) use ($announcementLimit) {
                     return $query->take($announcementLimit);
                     }) as $data)
-                    <tr>
+                    <tr class="textStart">
                         <td>{{ $data->title }}</td>
-                        <td>{{ $data->due_date }}</td>
                         <td>{{ $data->type }}</td>
-
-
                         <td>
                             <button type="button" class="btn btn-warning edit-btn" data-id="{{ $data->id }}"
                                 data-title="{{ $data->title }}" data-date="{{ $data->due_date }}"
@@ -70,6 +67,7 @@ $announcementLimit = $announcementLimit ?? 5;
                                 </div>
                             </form>
                         </td>
+                        <td>{{ $data->due_date }}</td>
                     </tr>
                     @endforeach
                     <!-- announcement content end-->

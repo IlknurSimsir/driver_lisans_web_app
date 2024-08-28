@@ -15,10 +15,12 @@ class OrganisationSeeder extends Seeder
     {
         $data = [
             'name' => 'Dinamikod',
-            'phone' => '50555847413',
-            'address' => 'Sedirler',
-            'email' => 'sedirlerinbelasi42@gmail.com',
-            'logo' => 'dinamikod_logo.png',
+            'phone' => '5555151515',
+            'address' => 'Türkiye',
+            'email' => 'default_email@gmail.com',
+            'logo' => 'public/logos/default_logo.png',
+            'banner_img' => 'public/images/default_banner_img.png',
+            'image' => 'public/images/default_image.png',
             'working_hours' => 'dinamikod',
             'maps' => 'noAdress',
             'student_number' => '56',

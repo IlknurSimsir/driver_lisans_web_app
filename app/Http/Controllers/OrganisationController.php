@@ -10,9 +10,9 @@ class OrganisationController extends Controller
 {
     public function organisation()
     {
-
         $organisations = OrganisationModel::all();
         $organisation_name = OrganisationModel::first();
+
         // Veritabanı alanlarını kullanıcı dostu isimlerle eşle
         $fieldNames = [
             'name' => 'Kurum Adı',
@@ -23,6 +23,8 @@ class OrganisationController extends Controller
             'address' => 'Adres',
             'wp_contact' => 'WhatsApp İletişim',
             'logo' => 'Kurum Logosu',
+            'banner_img' => 'Kurum Banner Fotoğrafı',
+            'image' => 'Kurum Fotoğrafı',
             'instagram' => 'Instagram Hesabı',
             'facebook' => 'Facebook Hesabı',
             'youtube' => 'YouTube Kanalı',
@@ -35,22 +37,15 @@ class OrganisationController extends Controller
             'teacher_number' => 'Öğretmen Sayısı',
             'vehicle_number' => 'Araç Sayısı',
         ];
+
         return view("admin_panel.organisation", compact('organisations', 'organisation_name', 'fieldNames'));
     }
+
     public function update(Request $request, $id)
     {
         $organisation = OrganisationModel::findOrFail($id);
         $key = $request->input('key');
         $value = $request->input('value');
-        if ($key === 'logo' && $request->hasFile('logo')) {
-            $file = $request->file('logo');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/logos', $filename);
-            $organisation->logo = 'storage/logos/' . $filename;
-            $organisation->save();
-
-            return redirect()->back()->with('success', 'Logo başarıyla güncellendi.');
-        }
 
         if (in_array($key, $organisation->getFillable()) || in_array($key, $organisation->getNullable())) {
             $organisation->$key = $value;
@@ -60,29 +55,67 @@ class OrganisationController extends Controller
 
         return redirect()->back()->with('error', 'Geçersiz alan.');
     }
+
     public function updateLogo(Request $request, $id)
     {
-        // Dosya yükleme işlemi için doğrulama
         $request->validate([
-            'logo' => 'required|mimes:png,jpg,jpeg,csv|max:1024',
+            'logo' => 'required|mimes:png,jpg,jpeg|max:1024',
         ]);
 
-        // İlgili organizasyonu bul
         $organisation = OrganisationModel::findOrFail($id);
 
-        // Dosya yükleme işlemi
         if ($request->hasFile('logo')) {
-            // Eski logoyu silme (eğer varsa)
             if ($organisation->logo) {
                 Storage::delete($organisation->logo);
             }
 
-            // Yeni dosyayı yükleme
-            $path = $request->file('logo')->store('public/logos'); // 'public/logos' dizinine kaydedilecek
-            $organisation->logo = $path; // Dosya yolunu veritabanında sakla
-            $organisation->save(); // Veritabanındaki organizasyonu güncelle
+            $path = $request->file('logo')->store('logos', 'public');
+            $organisation->logo = $path;
+            $organisation->save();
         }
 
         return redirect()->back()->with('success', 'Logo başarıyla güncellendi.');
+    }
+
+    public function updateBannerImg(Request $request, $id)
+    {
+        $request->validate([
+            'banner_img' => 'required|mimes:png,jpg,jpeg|max:1024',
+        ]);
+
+        $organisation = OrganisationModel::findOrFail($id);
+
+        if ($request->hasFile('banner_img')) {
+            if ($organisation->banner_img) {
+                Storage::delete($organisation->banner_img);
+            }
+
+            $path = $request->file('banner_img')->store('images', 'public');
+            $organisation->banner_img = $path;
+            $organisation->save();
+        }
+
+        return redirect()->back()->with('success', 'Banner başarıyla güncellendi.');
+    }
+
+    public function updateImage(Request $request, $id)
+    {
+        $request->validate([
+            'image' => 'required|mimes:png,jpg,jpeg|max:1024',
+        ]);
+
+        $organisation = OrganisationModel::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            if ($organisation->image) {
+                Storage::delete($organisation->image);
+            }
+
+            $path = $request->file('image')->store('images', 'public');
+            $organisation->image = $path;
+            $organisation->save();
+        }
+
+        return redirect()->back()->with('success', 'Fotoğraf başarıyla güncellendi.');
     }
 }

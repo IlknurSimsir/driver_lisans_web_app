@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/organisation', [OrganisationController::class, 'organisation'])->name('organisation');
     Route::put('/organisation/update/{id}', [OrganisationController::class, 'update'])->name('organisation.update');
     Route::put('/organisation/update/logo/{id}', [OrganisationController::class, 'updateLogo'])->name('organisation.updateLogo');
+    Route::put('/organisation/update/banner_img/{id}', [OrganisationController::class, 'updateBannerImg'])->name('organisation.updateBannerImg');
+    Route::put('/organisation/update/image/{id}', [OrganisationController::class, 'updateImage'])->name('organisation.updateImage');
     /*Şube */
     Route::get('/substation', [SubstationController::class, 'substation'])->name('substation');
     Route::post('/substationadd', [SubstationController::class, 'add'])->name('substationadd');
@@ -56,14 +58,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/resourceadd', [ResourceController::class, 'add'])->name('resourceadd');
     Route::get('/resource', [ResourceController::class, 'resource'])->name('resource');
     Route::put('/resource/{id}/activity', [ResourceController::class, 'updateActivity'])->name('resource.updateActivity');
+    Route::get('/download/{filename}', [ResourceController::class, 'download'])->name('download');
     /*Test */
     Route::post('/testupdate', [TestController::class, 'update'])->name('testupdate');
     Route::post('/testdelete', [TestController::class, 'delete'])->name('testdelete');
     Route::post('/testadd', [TestController::class, 'add'])->name('testadd');
     Route::get('/test', [TestController::class, 'test'])->name('test');
     Route::put('/test/{id}/activity', [TestController::class, 'updateActivity'])->name('test.updateActivity');
-
-
     /*Soru */
     Route::get('/question{id}', [QuestionController::class, 'question'])->name('question');
     Route::post('/questionadd', [QuestionController::class, 'add'])->name('questionadd');

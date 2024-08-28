@@ -32,7 +32,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="correct_answer" class="form-label">Doğru Cevap</label>
-                        <input type="text" class="form-control" id="addCorrect_answer" name="correct_answer" required>
+                        <select class="form-control" id="addCorrect_answer" name="correct_answer" required>
+                            <option value="">Doğru cevabı seçin</option>
+                            <option value="choice_1">Seçenek 1</option>
+                            <option value="choice_2">Seçenek 2</option>
+                            <option value="choice_3">Seçenek 3</option>
+                            <option value="choice_4">Seçenek 4</option>
+                        </select>
                     </div>
                     <!-- Gizli input ile test_id gönder -->
                     <input type="hidden" id="addTest_id" name="test_id" value="{{ $testId }}">

@@ -17,6 +17,8 @@ class OrganisationModel extends Model
         'email',
         'address',
         'logo',
+        'banner_img',
+        'image',
         'working_hours',
         'maps',
         'student_number',

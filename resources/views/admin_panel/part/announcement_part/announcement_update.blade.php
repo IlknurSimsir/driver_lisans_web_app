@@ -24,7 +24,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="editType" class="form-label">Tür</label>
-                        <input type="text" class="form-control" id="editType" name="type" required>
+                        <select class="form-select" id="editType" name="type" required>
+                            <option value="" disabled>Tür Seçin</option>
+                            <option value="kurum_ici">Kurum içi</option>
+                            <option value="kurum_dısı">Kurum dışı</option>
+                        </select>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Kaydet</button>
