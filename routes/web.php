@@ -12,7 +12,8 @@ use App\Http\Controllers\ImportandInformationController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\TestController;
-
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\StudentController;
 
 Auth::routes();
 
@@ -70,6 +71,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/questionadd', [QuestionController::class, 'add'])->name('questionadd');
     Route::post('/questionupdate', [QuestionController::class, 'update'])->name('questionupdate');
     Route::post('/questiondelete', [QuestionController::class, 'delete'])->name('questiondelete');
+    /*Dersler */
+    Route::post('/lessonupdate', [LessonController::class, 'update'])->name('lessonupdate');
+    Route::post('/lessonadd', [LessonController::class, 'add'])->name('lessonadd');
+    Route::get('/lesson', [LessonController::class, 'lesson'])->name('lesson');
+    Route::put('/lesson/{id}/activity', [LessonController::class, 'updateActivity'])->name('lesson.updateActivity');
+    /*Öğrenci */
+    Route::get('/student', [StudentController::class, 'student'])->name('student');
+    Route::post('/studentupdate', [StudentController::class, 'update'])->name('studentupdate');
+    Route::post('/studentdelete', [StudentController::class, 'delete'])->name('studentdelete');
+    Route::post('/studentadd', [StudentController::class, 'add'])->name('studentadd');
     /* çıkış işlemleri */
     Route::get('/signout', [SignController::class, 'signout'])->name('signout');
 });

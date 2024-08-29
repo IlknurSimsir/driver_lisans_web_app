@@ -12,7 +12,7 @@
 
                     <div class="mb-3">
                         <label for="addTitle" class="form-label">Başlık</label>
-                        <input type="text" class="form-control" id="addTitle" name="title" required>
+                        <input type="text" class="form-control summernote" id="addTitle" name="title" required>
                     </div>
                     <div class="mb-3">
                         <label for="addContent" class="form-label">İçerik</label>

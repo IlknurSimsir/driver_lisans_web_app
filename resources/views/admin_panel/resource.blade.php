@@ -19,10 +19,11 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Önemli Bilgiler</h6>
+                        <h6 class="mb-0">Kaynaklar</h6>
                         <div>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-                                <i class="fas fa-plus"></i> Yeni Bilgi
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addModal">
+                                <i class="fas fa-plus"></i> Yeni Kaynak
                             </button>
 
                         </div>
@@ -44,42 +45,46 @@
                             <tbody>
                                 <!-- resource content start -->
                                 @foreach ($resource as $data)
-                                <tr class="textStart">
-                                    <td>{{ $data->title }}</td>
-                                    @foreach ($lesson as $lessons)
-                                    @if( $lessons->id == $data-> lesson_id)
-                                    <td>{{ $lessons->name }}</td>
-                                    @endif
-                                    @endforeach
-                                    <td>
-                                        <button type="button" class="btn btn-warning edit-btn" data-id="{{ $data->id }}"
-                                            data-title="{{ $data->title }}"
-                                            data-lesson_id="{{ $data->lesson_id }}" data-resource="{{$data->resource}}"
-                                            data-bs-toggle="modal" data-bs-target="#editModal">
-                                            Düzenle
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning delete-btn" data-id="{{ $data->id }}"
-                                            data-title="{{ $data->title }}"
-                                            data-bs-toggle="modal" data-bs-target="#deleteModal">
-                                            Sil
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('download', basename($data->resource)) }}">{{ $data->title }} dosyasını indir</a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('resource.updateActivity', $data->id) }}" method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" name="activity" value="1"
-                                                    onchange="this.form.submit()" {{ $data->activity ? 'checked' : '' }}>
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    <tr class="textStart">
+                                        <td>{{ $data->title }}</td>
+                                        @foreach ($lesson as $lessons)
+                                            @if ($lessons->id == $data->lesson_id)
+                                                <td>{{ $lessons->name }}</td>
+                                            @endif
+                                        @endforeach
+                                        <td>
+                                            <button type="button" class="btn btn-warning edit-btn"
+                                                data-id="{{ $data->id }}" data-title="{{ $data->title }}"
+                                                data-lesson_id="{{ $data->lesson_id }}"
+                                                data-resource="{{ $data->resource }}" data-bs-toggle="modal"
+                                                data-bs-target="#editModal">
+                                                Düzenle
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning delete-btn"
+                                                data-id="{{ $data->id }}" data-title="{{ $data->title }}"
+                                                data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                Sil
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('download', basename($data->resource)) }}">{{ $data->title }}
+                                                dosyasını indir</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('resource.updateActivity', $data->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" name="activity"
+                                                        value="1" onchange="this.form.submit()"
+                                                        {{ $data->activity ? 'checked' : '' }}>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 <!-- resource content end-->
                             </tbody>

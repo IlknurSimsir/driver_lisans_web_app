@@ -6,7 +6,9 @@
         <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
                 <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                <div
+                    class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                </div>
             </div>
             <div class="ms-3">
                 <h6 class="mb-0">{{ Session::get('user_name') }}</h6>
@@ -20,7 +22,8 @@
             <a href="/announcement" class="nav-item nav-link {{ Request::is('announcement') ? 'active' : '' }}">
                 <i class="fa fa-th me-2"></i>Duyurular
             </a>
-            <a href="/importand_information" class="nav-item nav-link {{ Request::is('importand_information') ? 'active' : '' }}">
+            <a href="/importand_information"
+                class="nav-item nav-link {{ Request::is('importand_information') ? 'active' : '' }}">
                 <i class="fa fa-keyboard me-2"></i>Önemli Bilgiler
             </a>
             <a href="/resource" class="nav-item nav-link {{ Request::is('resource') ? 'active' : '' }}">
@@ -29,9 +32,14 @@
             <a href="/test" class="nav-item nav-link {{ Request::is('test') ? 'active' : '' }}">
                 <i class="fa fa-chart-bar me-2"></i>Testler
             </a>
-
+            <a href="/lesson" class="nav-item nav-link {{ Request::is('lesson') ? 'active' : '' }}">
+                <i class="fa fa-chart-bar me-2"></i>Dersler
+            </a>
             <a href="/organisation" class="nav-item nav-link {{ Request::is('organisation') ? 'active' : '' }}">
                 <i class="fa fa-table me-2"></i>Kurum Bilgisi
+            </a>
+            <a href="/student" class="nav-item nav-link {{ Request::is('student') ? 'active' : '' }}">
+                <i class="fa fa-users me-2"></i>Öğrenciler
             </a>
             <a href="/substation" class="nav-item nav-link {{ Request::is('substation') ? 'active' : '' }}">
                 <i class="fa fa-chart-bar me-2"></i>Şubeler
