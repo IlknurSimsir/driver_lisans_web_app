@@ -9,7 +9,6 @@
                 <form id="addForm" action="{{ route('classadd') }}" method="POST">
                     @csrf
                     <!-- @method('PUT') alanını kaldırıyoruz çünkü sadece POST kullanacağız -->
-
                     <div class="mb-3">
                         <label for="addName" class="form-label">Sınıf Adı</label>
                         <input type="text" class="form-control" id="addName" name="name" required>
@@ -20,18 +19,21 @@
                     </div>
                     <div class="mb-3">
                         <label for="addLesson_teacher_id" class="form-label">Ders Hocası</label>
-                        <input type="text" class="form-control" id="addLesson_teacher_id" name="lesson_teacher_id"
-                            required>
+                        <select class="form-select" id="addLesson_teacher_id" name="lesson_teacher_id" required>
+                            <option value="" disabled selected>Eğitmen Seçin</option>
+                            @foreach($teacher as $teachers)
+                            <option value="{{ $teachers->id }}">{{ $teachers->name }} {{ $teachers->surname }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="addClass_size" class="form-label">Mevcutı</label>
+                        <label for="addClass_size" class="form-label">Mevcut</label>
                         <input type="text" class="form-control" id="addClass_size" name="class_size" required>
                     </div>
                     <div class="mb-3">
                         <label for="addStart_date" class="form-label">Başlama Tarihi</label>
-                        <input type="text" class="form-control" id="addStart_date" name="start_date" required>
+                        <input type="date" class="form-control" id="addStart_date" name="start_date" required>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Kaydet</button>
                 </form>
             </div>

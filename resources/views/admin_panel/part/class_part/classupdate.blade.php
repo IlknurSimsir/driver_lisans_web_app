@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Ders Düzenle</h5>
+                <h5 class="modal-title" id="editModalLabel">Sınıf Düzenle</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -19,9 +19,19 @@
                         <input type="text" class="form-control" id="editTerm" name="term" required>
                     </div>
                     <div class="mb-3">
-                        <label for="Lesson_teacher_id" class="form-label">Ders Hocası</label>
-                        <input type="text" class="form-control" id="editLesson_teacher_id" name="lesson_teacher_id"
-                            required>
+                        <label for="editLesson_teacher_id" class="form-label">Ders Hocası</label>
+                        <select class="form-select" id="editLesson_teacher_id" name="lesson_teacher_id" required>
+                            <option value="" disabled selected>Ders Seçin</option>
+                            @foreach($teacherclass as $teacherclasses)
+                            @foreach($teacher as $teachers)
+                            @if($teachers->id == $teacherclasses->teacher_id)
+                            <option value="{{ $teachers->id }}" data-class-id="{{ $teacherclasses->class_id }}">
+                                {{ $teachers->name }} {{ $teachers->surname }}
+                            </option>
+                            @endif
+                            @endforeach
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="Class_size" class="form-label">Mevcut</label>
@@ -29,7 +39,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="Start_date" class="form-label">Başlama Tarihi</label>
-                        <input type="text" class="form-control" id="editStart_date" name="start_date" required>
+                        <input type="date" class="form-control" id="editStart_date" name="start_date" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Kaydet</button>
@@ -47,7 +57,6 @@
             button.addEventListener('click', function() {
                 var id = this.getAttribute('data-id');
                 var name = this.getAttribute('data-name');
-                var content = this.getAttribute('data-content');
                 var term = this.getAttribute('data-term');
                 var lesson_teacher_id = this.getAttribute('data-lesson_teacher_id');
                 var class_size = this.getAttribute('data-class_size');
@@ -56,9 +65,11 @@
                 document.getElementById('editId').value = id;
                 document.getElementById('editName').value = name;
                 document.getElementById('editTerm').value = term;
-                document.getElementById('editLesson_teacher_id').value = lesson_teacher_id;
                 document.getElementById('editClass_size').value = class_size;
                 document.getElementById('editStart_date').value = start_date;
+
+
+
             });
         });
     });

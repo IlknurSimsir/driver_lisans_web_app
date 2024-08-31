@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('class', function (Blueprint $table) {
-            $table->tinyIncrements('id')->primary();
-            $table->text('name', 64);
-            $table->text('term', 64);
-            $table->integer('class_size');
-            $table->string('start_date');
+        Schema::create('teacherclass', function (Blueprint $table) {
+            $table->id();
+            $table->string('teacher_id');
+            $table->string('class_id');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

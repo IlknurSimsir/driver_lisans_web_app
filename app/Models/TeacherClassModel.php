@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClassModel extends Model
+class TeacherClassModel extends Model
 {
     use HasFactory;
-    protected $table = 'class';
+    protected $table = 'teacherclass';
 
     protected $fillable = [
-        'name',
-        'term',
-        'class _size',
-        'start_date',
+        'class_id',
+        'teacher_id',
     ];
 
     public $timestamps = true;

@@ -15,6 +15,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\TeacherController;
 
 Auth::routes();
 
@@ -81,12 +82,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/classupdate', [ClassController::class, 'update'])->name('classupdate');
     Route::post('/classadd', [ClassController::class, 'add'])->name('classadd');
     Route::get('/class', [ClassController::class, 'class'])->name('class');
-    Route::put('/class/{id}/activity', [ClassController::class, 'updateActivity'])->name('class.updateActivity');
     /*Öğrenci */
     Route::get('/student', [StudentController::class, 'student'])->name('student');
     Route::post('/studentupdate', [StudentController::class, 'update'])->name('studentupdate');
     Route::post('/studentdelete', [StudentController::class, 'delete'])->name('studentdelete');
     Route::post('/studentadd', [StudentController::class, 'add'])->name('studentadd');
+    /*Eğitmen */
+    Route::get('/teacher', [TeacherController::class, 'teacher'])->name('teacher');
+    Route::post('/teacherupdate', [TeacherController::class, 'update'])->name('teacherupdate');
+    Route::post('/teacherdelete', [TeacherController::class, 'delete'])->name('teacherdelete');
+    Route::post('/teacheradd', [TeacherController::class, 'add'])->name('teacheradd');
     /* çıkış işlemleri */
     Route::get('/signout', [SignController::class, 'signout'])->name('signout');
 });

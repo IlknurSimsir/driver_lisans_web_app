@@ -42,6 +42,10 @@
                 <i class="fa fa-user-graduate me-2"></i>Öğrenci
             </a>
             <hr>
+            <a href="/teacher" class="nav-item nav-link {{ Request::is('teacher') ? 'active' : '' }}">
+                <i class="fa fa-book me-2"></i>Eğitmen
+            </a>
+            <hr>
             <a href="/class" class="nav-item nav-link {{ Request::is('class') ? 'active' : '' }}">
                 <i class="fa fa-chalkboard me-2"></i>Sınıf
             </a>
