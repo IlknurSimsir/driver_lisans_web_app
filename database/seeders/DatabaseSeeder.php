@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             LessonSeeder::class,
             CourseStatusSeeder::class,
             LicenseTypeSeeder::class,
+            StudentSeeder::class,
         ]);
     }
 }

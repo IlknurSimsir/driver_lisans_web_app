@@ -14,6 +14,7 @@ use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ClassController;
 
 Auth::routes();
 
@@ -71,11 +72,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/questionadd', [QuestionController::class, 'add'])->name('questionadd');
     Route::post('/questionupdate', [QuestionController::class, 'update'])->name('questionupdate');
     Route::post('/questiondelete', [QuestionController::class, 'delete'])->name('questiondelete');
-    /*Dersler */
+    /*Ders */
     Route::post('/lessonupdate', [LessonController::class, 'update'])->name('lessonupdate');
     Route::post('/lessonadd', [LessonController::class, 'add'])->name('lessonadd');
     Route::get('/lesson', [LessonController::class, 'lesson'])->name('lesson');
     Route::put('/lesson/{id}/activity', [LessonController::class, 'updateActivity'])->name('lesson.updateActivity');
+    /*Sınıf */
+    Route::post('/classupdate', [ClassController::class, 'update'])->name('classupdate');
+    Route::post('/classadd', [ClassController::class, 'add'])->name('classadd');
+    Route::get('/class', [ClassController::class, 'class'])->name('class');
+    Route::put('/class/{id}/activity', [ClassController::class, 'updateActivity'])->name('class.updateActivity');
     /*Öğrenci */
     Route::get('/student', [StudentController::class, 'student'])->name('student');
     Route::post('/studentupdate', [StudentController::class, 'update'])->name('studentupdate');

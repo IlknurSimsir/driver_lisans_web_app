@@ -1,27 +1,32 @@
 @include('layouts.head')
 <style>
     .bg-started {
-        background-color: #133b40;
+        background-color: rgba(254, 254, 248, 0.526) !important;
+        color: black;
         /* Başladı */
     }
 
     .bg-completed {
-        background-color: #0e7267;
+        background-color: #468a5543 !important;
+        color: black;
         /* Tamamladı */
     }
 
     .bg-failed-exam {
-        background-color: rgb(212, 14, 14);
+        background-color: rgba(199, 0, 0, 0.266) !important;
+        color: rgb(0, 0, 0);
         /* E-Sınavdan Kaldı */
     }
 
     .bg-failed-driving {
-        background-color: #FFE082;
+        background-color: rgba(60, 93, 164, 0.265) !important;
+        color: black;
         /* Direksiyon Sınavından Kaldı */
     }
 
     .bg-failed-attendance {
-        background-color: #3c2e02;
+        background-color: #3c2e024d !important;
+        color: black;
         /* Devamsızlıktan Kaldı */
     }
 </style>

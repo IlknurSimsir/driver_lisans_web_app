@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class StudentModel extends Model
 {
     use HasFactory, SoftDeletes;
@@ -26,5 +27,5 @@ class StudentModel extends Model
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public $timestamps = true; 
+    public $timestamps = true;
 }
