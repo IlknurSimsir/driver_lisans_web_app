@@ -22,14 +22,13 @@
                         <label for="editLesson_teacher_id" class="form-label">Ders Hocası</label>
                         <select class="form-select" id="editLesson_teacher_id" name="lesson_teacher_id" required>
                             <option value="" disabled selected>Ders Seçin</option>
-                            @foreach($teacherclass as $teacherclasses)
+
                             @foreach($teacher as $teachers)
-                            @if($teachers->id == $teacherclasses->teacher_id)
-                            <option value="{{ $teachers->id }}" data-class-id="{{ $teacherclasses->class_id }}">
+
+                            <option value="{{ $teachers->id }}">
                                 {{ $teachers->name }} {{ $teachers->surname }}
                             </option>
-                            @endif
-                            @endforeach
+
                             @endforeach
                         </select>
                     </div>
@@ -67,7 +66,7 @@
                 document.getElementById('editTerm').value = term;
                 document.getElementById('editClass_size').value = class_size;
                 document.getElementById('editStart_date').value = start_date;
-
+                document.getElementById('editLesson_teacher_id').value = lesson_teacher_id;
 
 
             });
