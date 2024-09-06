@@ -15,17 +15,18 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\TeacherController;
 
 Auth::routes();
 
 Route::get('/login', [SignController::class, 'login'])->name("login");
 Route::post('/signinPost', [SignController::class, 'signInPost'])->name("signInPost");
-
+Route::get('/', [MainPageController::class, 'mainPage'])->name("mainPage");
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', [AdminController::class, 'admin_index'])->name('admin_index');
+    //Route::get('/', [AdminController::class, 'admin_index'])->name('admin_index');
     Route::get('/admin_index', [AdminController::class, 'admin_index'])->name('admin_index');
     /*Duyuru */
     Route::post('/announcementupdate', [AnnouncementController::class, 'update'])->name('announcementupdate');
