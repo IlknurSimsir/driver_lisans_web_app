@@ -17,7 +17,7 @@ class PanelUserModel extends Authenticatable
         'phone',
         'email',
         'password',
-        'password_token',
+        'forgot_token',
     ];
 
     public $timestamps = true;

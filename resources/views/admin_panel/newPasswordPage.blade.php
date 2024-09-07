@@ -51,24 +51,15 @@
                             <a href="index.html" class="">
                                 <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
                             </a>
-                            <h3>Sign In</h3>
+                            <h3>Yeni Parola</h3>
                         </div>
-                        <form action="{{route('signInPost')}}" method="post">
+                        <form action="{{route('newPasswordPost')}}" method="post">
                             @csrf
-                            <div class="form-floating mb-3">
-                                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
-                            </div>
+                            <input type="text" name="forgot_token" hidden class="form-control" id="floatingInput" value="{{$forgot_token}}">
+
                             <div class="form-floating mb-4">
                                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Password</label>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                                <a href="{{route('resetPasswordPage')}}">Forgot Password</a>
                             </div>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
                         </form>
