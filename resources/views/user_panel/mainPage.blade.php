@@ -1,19 +1,10 @@
-@include('layouts.head')
-<!DOCTYPE html>
-<html lang="tr">
+@extends('user_panel.part.navbar')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Navbar</title>
+<div class="container">
 
-</head>
-
-<body>
-    <!-- Navbar Start -->
-    @include('user_panel.part.navbar')
-    <!-- Navbar End -->
-    deneme
-</body>
-
-</html>
+    <!-- Slider Img Start -->
+    @include('user_panel.part.slider')
+    <!--  Slider Img End -->
+</div>
+@endsection
