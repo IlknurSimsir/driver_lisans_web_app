@@ -27,7 +27,7 @@ Route::get('/resetPasswordPage', [SignController::class, 'resetPasswordPage'])->
 Route::post('/resetPasswordEmail', [SignController::class, 'resetPasswordEmail'])->name("resetPasswordEmail");
 Route::get('/newPassword/{token}', [SignController::class, 'newPassword'])->name("newPassword");
 Route::post('/newPasswordPost', [SignController::class, 'newPasswordPost'])->name("newPasswordPost");
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'log'])->group(function () {
 
     //Route::get('/', [AdminController::class, 'admin_index'])->name('admin_index');
     Route::get('/admin_index', [AdminController::class, 'admin_index'])->name('admin_index');
