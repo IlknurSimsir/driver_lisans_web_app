@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrganisationModel;
 use App\Models\SubstationModel;
 use Illuminate\Http\Request;
 
@@ -10,9 +9,8 @@ class SubstationController extends Controller
 {
     public function substation()
     {
-        $organisation_name = OrganisationModel::first();
         $substation = SubstationModel::all();
-        return view("admin_panel.substation", compact('organisation_name', 'substation'));
+        return view("admin_panel.substation", compact('substation'));
     }
     public function update(Request $request)
     {

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\LessonModel;
-use App\Models\OrganisationModel;
 use App\Models\ResourceModel;
 use Illuminate\Http\Request;
 
@@ -11,10 +10,9 @@ class ResourceController extends Controller
 {
     public function resource()
     {
-        $organisation_name = OrganisationModel::first();
         $resource = ResourceModel::all();
         $lesson = LessonModel::all();
-        return view("admin_panel.resource", compact('resource', 'organisation_name', 'lesson'));
+        return view("admin_panel.resource", compact('resource', 'lesson'));
     }
 
     public function update(Request $request)

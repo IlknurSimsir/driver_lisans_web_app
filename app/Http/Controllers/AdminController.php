@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 
 use App\Models\AnnouncementModel;
 use App\Models\OrganisationModel;
-use App\Models\PanelUserModel;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller

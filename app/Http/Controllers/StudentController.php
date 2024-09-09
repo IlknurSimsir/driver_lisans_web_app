@@ -6,17 +6,15 @@ use App\Models\CourseStatusModel;
 use App\Models\LicenseTypeModel;
 use Illuminate\Http\Request;
 use App\Models\StudentModel;
-use App\Models\OrganisationModel;
 
 class StudentController extends Controller
 {
     public function student()
     {
-        $organisation_name = OrganisationModel::first();
         $student = StudentModel::all();
         $course = CourseStatusModel::all();
         $license = LicenseTypeModel::all();
-        return view("admin_panel.student", compact('student', 'organisation_name', 'course', 'license'));
+        return view("admin_panel.student", compact('student', 'course', 'license'));
     }
     public function update(Request $request)
     {

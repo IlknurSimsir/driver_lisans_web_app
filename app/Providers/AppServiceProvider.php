@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models\OrganisationModel;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('*', function ($view) {
+            // Veritabanından şirket verilerini çek
+            $company = OrganisationModel::first(); // Tabloda sadece bir satır varsa bu yeterlidir
+
+            $view->with('companyName', $company->name);
+            $view->with('companyLogo', $company->logo);
+        });
     }
 }

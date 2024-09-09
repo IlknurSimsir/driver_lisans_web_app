@@ -1,7 +1,7 @@
 <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-light navbar-light">
         <a href="/admin_index" class="navbar-brand mx-4 mb-3">
-            <h3 class="text-primary"><i class="fa fa-address-card me-2"></i>{{ $organisation_name->name }}</h3>
+            <h3 class="text-primary"><i class="fa fa-address-card me-2"></i>{{ $companyName }}</h3>
         </a>
         <hr>
         <div class="d-flex align-items-center ms-4 mb-4">

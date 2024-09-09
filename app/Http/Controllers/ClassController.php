@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClassModel;
-use App\Models\OrganisationModel;
 use App\Models\TeacherClassModel;
 use App\Models\TeacherModel;
 
@@ -12,11 +11,10 @@ class ClassController extends Controller
 {
     public function class()
     {
-        $organisation_name = OrganisationModel::first();
         $class = ClassModel::all();
         $teacher = TeacherModel::all();
         $teacherclass = TeacherClassModel::all();
-        return view("admin_panel.class", compact('class', 'organisation_name', 'teacher', 'teacherclass'));
+        return view("admin_panel.class", compact('class', 'teacher', 'teacherclass'));
     }
 
     public function update(Request $request)

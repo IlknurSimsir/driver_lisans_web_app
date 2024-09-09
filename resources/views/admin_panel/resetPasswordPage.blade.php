@@ -49,11 +49,12 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                            <a href="/admin_index">
+                                <div class="text-center"> <img src="{{ Storage::url($companyLogo) }}" alt="{{ $companyName }} logo" width="30%"></div>
                             </a>
-                            <h3>Parola Sıfırla</h3>
+
                         </div>
+                        <h3>Parola Sıfırla</h3>
                         <form action="{{route('resetPasswordEmail')}}" method="post">
                             @csrf
                             <div class="form-floating mb-3">

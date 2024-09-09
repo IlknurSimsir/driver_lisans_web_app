@@ -5,17 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\LessonModel;
 use Illuminate\Http\Request;
 use App\Models\TeacherModel;
-use App\Models\OrganisationModel;
 use Illuminate\Support\Facades\Log;
 
 class TeacherController extends Controller
 {
     public function teacher()
     {
-        $organisation_name = OrganisationModel::first();
         $teacher = TeacherModel::all();
         $lesson = LessonModel::all();
-        return view("admin_panel.teacher", compact('teacher', 'organisation_name', 'lesson'));
+        return view("admin_panel.teacher", compact('teacher', 'lesson'));
     }
 
     public function update(Request $request)

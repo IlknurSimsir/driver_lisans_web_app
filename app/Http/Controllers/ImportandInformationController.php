@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\ImportandInformationModel;
-use App\Models\OrganisationModel;
 use Illuminate\Http\Request;
 
 class ImportandInformationController extends Controller
 {
     public function importand_information()
     {
-        $organisation_name = OrganisationModel::first();
         $importand_information = ImportandInformationModel::all();
-        return view("admin_panel.importand_information", compact('importand_information', 'organisation_name'));
+        return view("admin_panel.importand_information", compact('importand_information'));
     }
 
     public function update(Request $request)

@@ -53,14 +53,20 @@ class SignController extends Controller
         $user->save();
         $data = array('token' => $forgot_token);
         try {
-            Mail::send('admin_panel.mail', $data, function ($message) {
-                $message->from(env('MAIL_FROM_ADDRESS'), 'İletişim');
-                $message->subject("İLETİŞİM FORMU");
-                $message->to('ilknursimsir205@gmail.com');
-            });
+            Mail::send(
+                'admin_panel.mail',
+                $data,
+                function ($message) {
+                    $message->from(env('MAIL_FROM_ADDRESS'), 'İletişim');
+                    $message->subject("İLETİŞİM FORMU");
+                    $message->to('ilknursimsir205@gmail.com');
+                }
+
+            );
         } catch (\Throwable $th) {
             dd($th->getMessage());
         }
+        return view('admin_panel.sendMailInfo');
     }
     public function newPassword($token)
     {

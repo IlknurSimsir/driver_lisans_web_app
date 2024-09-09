@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Announcement;
 use App\Models\AnnouncementModel;
-use App\Models\OrganisationModel;
 
 class AnnouncementController extends Controller
 {
     public function announcement()
     {
-        $organisation_name = OrganisationModel::first();
         $announcement = AnnouncementModel::orderBy('due_date', 'desc')->get();
-        return view("admin_panel.announcement_page", compact('announcement', 'organisation_name'));
+        return view("admin_panel.announcement_page", compact('announcement'));
     }
 
     public function update(Request $request)

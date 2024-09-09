@@ -1,15 +1,16 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Models\OrganisationModel;
 use App\Models\LessonModel;
+
 class LessonController extends Controller
 {
     public function lesson()
     {
-        $organisation_name = OrganisationModel::first();
         $lesson = LessonModel::all();
-        return view("admin_panel.lesson", compact('lesson', 'organisation_name'));
+        return view("admin_panel.lesson", compact('lesson'));
     }
 
     public function update(Request $request)

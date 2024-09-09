@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\LessonModel;
-use App\Models\OrganisationModel;
 use App\Models\TestModel;
 use Illuminate\Http\Request;
 
@@ -12,10 +11,9 @@ class TestController extends Controller
 
     public function test()
     {
-        $organisation_name = OrganisationModel::first();
         $test = TestModel::all();
         $lesson = LessonModel::all();
-        return view("admin_panel.test", compact('test', 'organisation_name', 'lesson'));
+        return view("admin_panel.test", compact('test', 'lesson'));
     }
 
     public function update(Request $request)

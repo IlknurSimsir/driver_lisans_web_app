@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrganisationModel;
 use App\Models\QuestionModel;
-use App\Models\SubstationModel;
 use App\Models\TestQuestionModel;
 use Illuminate\Http\Request;
 
@@ -12,11 +10,10 @@ class QuestionController extends Controller
 {
     public function question(Request $request)
     {
-        $organisation_name = OrganisationModel::first();
         $id = $request->route('id'); // Test ID'yi route üzerinden alıyoruz
         $testQuestions = TestQuestionModel::where('test_id', $id)->pluck('question_id'); // question_id'leri topluca alıyoruz
         $questions = QuestionModel::whereIn('id', $testQuestions)->get(); // Tüm ilgili soruları alıyoruz
-        return view("admin_panel.question", compact('organisation_name', 'questions', 'id'));
+        return view("admin_panel.question", compact('questions', 'id'));
     }
 
     public function update(Request $request)
