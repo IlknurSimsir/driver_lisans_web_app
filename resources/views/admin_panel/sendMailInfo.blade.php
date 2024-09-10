@@ -18,7 +18,7 @@
                     </div>
                     <div>
                         <div class="mb-3">
-                            <label for="floatingInput">Şifre yenileme linki mail adresinize gönderildi. Lütfen mail adresinize gelen linke tıklayarak yeni şifrenizi oluşturunuz.</label>
+                            <label for="floatingInput">Parola yenileme linki mail adresinize gönderildi. Lütfen mail adresinize gelen linke tıklayarak yeni parolanızı oluşturunuz.</label>
                         </div>
 
                         <div class="mb-4 text-end">

@@ -318,6 +318,15 @@ hr {
     padding: 5px;
 }
 
+.cardwimage {
+    background-color: #FFFFFF;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: start;
+    border-radius: 5px;
+    padding: 5px;
+}
+
 .titledark {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -406,4 +415,9 @@ hr {
 .backgroundcard {
     background-color: green;
 
+}
+
+.cardbtn {
+    border-radius: 20px;
+    margin: 3px;
 }

@@ -41,7 +41,7 @@
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Oturumu açık tut</label>
                                 </div>
-                                <a href="{{route('resetPasswordPage')}}">Forgot Password</a>
+                                <a href="{{route('resetPasswordPage')}}">Şifremi Unuttum</a>
                             </div>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Giriş Yap</button>
                         </form>

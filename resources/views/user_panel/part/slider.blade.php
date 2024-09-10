@@ -1,5 +1,6 @@
 @include('layouts.head')
-
+@extends('user_panel.part.navbar')
+@section('content')
 <div>
     <img src="img\mainPage.png" class="sliderImg" alt="">
 </div>
@@ -112,40 +113,48 @@
 </div>
 <div class="row  mt-3">
     <div class="col-lg-4 col-sm-12 col-md-4 ">
-        <div class="backgroundcard">
-            <div class="card">
+        <div class="backgroundcard p-1">
+            <div class="cardwimage m-1">
                 <img src="img\mainPage.png" alt="" style="width: 100%;">
-                <h6>Bayır Diamond</h6>
-                <a href="tel:+900000000000" class="btn btn-primary mb-2">Telefon</a>
-
-                <!-- Adres Butonu -->
-                <a href="https://www.google.com/maps?q=adresiniz" class="btn btn-secondary" target="_blank">Adres</a>
+                <h6 class='mt-3'>Bayır Diamond</h6>
+                <div>
+                    <a href="tel:+900000000000" class="btn btn-dark cardbtn">Telefon</a>
+                </div>
+                <div>
+                    <a href="https://www.google.com/maps?q=adresiniz" class="btn btn-dark cardbtn" target="_blank">Adres</a>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-lg-4 col-sm-12 col-md-4 ">
-        <div class="backgroundcard">
-            <div class="card">
+        <div class="backgroundcard p-1">
+            <div class="cardwimage m-1">
                 <img src="img\mainPage.png" alt="" style="width: 100%;">
-                <h6>Bayır Diamond</h6>
-                <a href="tel:+900000000000" class="btn btn-primary mb-2">Telefon</a>
-
-                <!-- Adres Butonu -->
-                <a href="https://www.google.com/maps?q=adresiniz" class="btn btn-secondary" target="_blank">Adres</a>
+                <h6 class='mt-3'>Bayır Diamond</h6>
+                <div>
+                    <a href="tel:+900000000000" class="btn btn-dark cardbtn">Telefon</a>
+                </div>
+                <div>
+                    <a href="https://www.google.com/maps?q=adresiniz" class="btn btn-dark cardbtn" target="_blank">Adres</a>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-lg-4 col-sm-12 col-md-4 ">
-        <div class="backgroundcard">
-            <div class="card">
+        <div class="backgroundcard p-1">
+            <div class="cardwimage m-1 ">
                 <img src="img\mainPage.png" alt="" style="width: 100%;">
-                <h6>Bayır Diamond</h6>
-                <a href="tel:+900000000000" class="btn btn-primary mb-2">Telefon</a>
+                <h6 class='mt-3'>Bayır Diamond</h6>
+                <div>
+                    <a href="tel:+900000000000" class="btn btn-dark cardbtn">Telefon</a>
+                </div>
+                <div>
+                    <a href="https://www.google.com/maps?q=adresiniz" class="btn btn-dark cardbtn" target="_blank">Adres</a>
+                </div>
 
-                <!-- Adres Butonu -->
-                <a href="https://www.google.com/maps?q=adresiniz" class="btn btn-secondary" target="_blank">Adres</a>
             </div>
         </div>
     </div>
 
 </div>
+@endsection
