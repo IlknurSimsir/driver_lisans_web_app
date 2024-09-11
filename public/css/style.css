@@ -337,12 +337,13 @@ hr {
 
 .cardwimage {
     background-color: #FFFFFF;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 2px 10px 2px 10px;
     text-align: start;
     border-radius: 5px;
     padding: 5px;
+    text-align: center;
 }
+
 
 .titledark {
     margin-top: 10px;
@@ -435,7 +436,10 @@ hr {
 
 .cardbtn {
     border-radius: 20px;
+    border: 2px solid var(--dark);
     margin: 3px;
+    color: var(--dark);
+
 }
 
 .footer-clean {
@@ -644,4 +648,152 @@ hr {
     padding: 10px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+/* carousel css */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-100% / 6 * 6));
+        /* 6 kart kaydıktan sonra başa dön */
+    }
+}
+
+.slider {
+    background: rgb(255, 255, 255);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+    height: auto;
+    /* Sabit yükseklik kaldırıldı */
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    /* Tam genişlikte olmasını sağlıyoruz */
+
+}
+
+.slider::before,
+.slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 100%;
+    /* Yükseklik sabit değil */
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+}
+
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slide-track {
+    animation: scroll 40s linear infinite;
+    /* Animasyon süresi */
+    display: flex;
+    width: calc(250px * 6);
+    /* 6 slaytı hesaba katarak genişliği ayarlayın */
+}
+
+.slide {
+    height: auto;
+    width: calc(250px * 6);
+    /* 6 slaytın ekrana sığacak şekilde genişlik ayarı */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    width: 100%;
+    /* Resmi tam olarak kutuya sığdır */
+    height: auto;
+    /* Resmin yüksekliği otomatik ayarlanacak */
+    object-fit: contain;
+    /* Resim kırpılmadan boyutlandırılacak */
+}
+
+@media (max-width: 768px) {
+    .slide-track {
+        width: calc(150px * 14);
+        /* Daha küçük ekranlarda slide genişliğini azaltıyoruz */
+    }
+
+    .slide {
+        width: 150px;
+        /* Küçük ekranlar için slide genişliği */
+    }
+}
+
+@media (max-width: 576px) {
+    .slide-track {
+        width: calc(100px * 14);
+        /* Daha küçük ekranlarda slide genişliğini daha da azaltıyoruz */
+    }
+
+    .slide {
+        width: 100px;
+        /* Daha küçük ekranlar için slide genişliği */
+    }
+}
+
+.lisance {
+    background-color: #efefef;
+    border-radius: 15px;
+    border: 1px solid rgb(202, 202, 202);
+    margin: 20px 10px 20px 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.lisance img {
+    border-radius: 15px;
+    border: 1px solid rgb(202, 202, 202);
+}
+
+.navFixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.vehicles {
+    background-color: linear-gradient(90deg, #ff7e5f, #feb47b);
+}
+
+.textVehicle {
+
+    padding: 5px;
+    background-color: var(--aqua);
+}
+
+/* Teachers Part */
+
+.teacherImg {
+    margin-top: 3px;
+    width: 100%;
+}
+
+.teacherName {
+    margin: 15px 0px 15px 0px;
+}
+
+.teacherStatus {
+    margin-bottom: 3px;
+}
+
+.cardMargin {
+    margin: 0px 20px 0px 20px;
 }

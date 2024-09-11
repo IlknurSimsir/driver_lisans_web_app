@@ -18,6 +18,9 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\UserSide\MainPageController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserSide\AboutUsController;
+use App\Http\Controllers\UserSide\DriverLisansController;
+use App\Http\Controllers\UserSide\TeacherController as UserSideTeacherController;
+use App\Http\Controllers\UserSide\VehicleController;
 
 // Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
@@ -34,7 +37,9 @@ Route::post('/newPasswordPost', [SignController::class, 'newPasswordPost'])->nam
 /*User Panel Routes*/
 Route::get('/', [MainPageController::class, 'mainPage'])->name("mainPage");
 Route::get('/aboutUs', [AboutUsController::class, 'aboutUs'])->name("aboutUs");
-
+Route::get('/driverLisans', [DriverLisansController::class, 'driverLisans'])->name("driverLisans");
+Route::get('/teachers', [UserSideTeacherController::class, 'teachers'])->name("teachers");
+Route::get('/vehicle', [VehicleController::class, 'vehicle'])->name("vehicle");
 Route::middleware(['auth', 'log'])->group(function () {
 
     //Route::get('/', [AdminController::class, 'admin_index'])->name('admin_index');
