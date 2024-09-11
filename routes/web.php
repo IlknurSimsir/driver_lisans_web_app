@@ -15,18 +15,26 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassController;
-use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\UserSide\MainPageController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\UserSide\AboutUsController;
+
+// Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+
 
 Auth::routes();
 
 Route::get('/login', [SignController::class, 'login'])->name("login");
 Route::post('/signinPost', [SignController::class, 'signInPost'])->name("signInPost");
-Route::get('/', [MainPageController::class, 'mainPage'])->name("mainPage");
 Route::get('/resetPasswordPage', [SignController::class, 'resetPasswordPage'])->name("resetPasswordPage");
 Route::post('/resetPasswordEmail', [SignController::class, 'resetPasswordEmail'])->name("resetPasswordEmail");
 Route::get('/newPassword/{token}', [SignController::class, 'newPassword'])->name("newPassword");
 Route::post('/newPasswordPost', [SignController::class, 'newPasswordPost'])->name("newPasswordPost");
+
+/*User Panel Routes*/
+Route::get('/', [MainPageController::class, 'mainPage'])->name("mainPage");
+Route::get('/aboutUs', [AboutUsController::class, 'aboutUs'])->name("aboutUs");
+
 Route::middleware(['auth', 'log'])->group(function () {
 
     //Route::get('/', [AdminController::class, 'admin_index'])->name('admin_index');

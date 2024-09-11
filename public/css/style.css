@@ -4,6 +4,12 @@
     --light: #F3F6F9;
     --dark: #191C24;
     --aqua: #338dc9;
+    --green: #225b25;
+    --fourthBoxColor: #22265b;
+    --thirdBoxColor: #879926;
+    --secondBoxColor: #225b25;
+    --firstBoxColor: #5b2222;
+
 }
 
 .back-to-top {
@@ -133,6 +139,7 @@ hr {
     border-left: 3px solid var(--light);
     border-radius: 0 30px 30px 0;
     outline: none;
+
 }
 
 .sidebar .navbar .navbar-nav .nav-link:hover,
@@ -300,6 +307,15 @@ hr {
     display: block;
 }
 
+.bannerImg {
+    width: 100%;
+    height: 200px;
+    /* Yüksekliği belirleyin */
+    object-fit: cover;
+    /* Görselin kutuya sığarken bozulmadan kesilmesini sağlar */
+    display: block;
+}
+
 .renks {
     color: rgb(255, 255, 255);
     font-size: 30px;
@@ -410,7 +426,6 @@ hr {
 .bg-failed-attendance {
     background-color: #3c2e024d !important;
     color: black;
-    /* Devamsızlıktan Kaldı */
 }
 
 .backgroundcard {
@@ -509,18 +524,12 @@ hr {
     opacity: 0.6;
 }
 
-
 .user-navbar {
-    background-color: var(--aqua);
+    background-color: var(--green);
+    z-index: 2;
     /* Arka plan rengini istediğiniz gibi ayarladınız */
 }
 
-.user-nav-text {
-    color: var(--light);
-    /* Navbar yazı rengini açık yaparak görünür hale getiriyoruz */
-}
-
-/* Navbar'daki linklerin rengini beyaz yapalım ki arka planda görünür olsun */
 .user-navbar .nav-link {
     color: white !important;
     /* Linklerin rengi beyaz olacak */
@@ -558,4 +567,81 @@ hr {
         /* Yazı boyutunu küçültüyoruz */
     }
 
+}
+
+/* Navbar kısmı zaten mevcut, buna dokunmuyoruz */
+
+.navChannel {
+    position: absolute;
+    /* NavChannel div'i normal akıştan çıkar, yer kaplamaz */
+    top: 45px;
+    /* İkonların görselin üzerinde nereye yerleşeceğini belirler */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Yatayda tam ortalamak için */
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+    /* İkonlar arasındaki boşluk */
+    z-index: 1;
+    /* İkonların diğer içeriklerin üstünde görünmesi için */
+    width: auto;
+    /* Genişlik sabitlemesini kaldır */
+}
+
+.navSubChannel {
+    color: var(--light);
+    padding: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+
+}
+
+.splittedCard {
+    background-color: #ededed;
+    text-align: center;
+    padding-right: 0px;
+    padding-left: 0px;
+    color: #000000;
+    border-radius: 20px;
+}
+
+.firstColor {
+    background: var(--firstBoxColor);
+}
+
+.secondColor {
+    background: var(--secondBoxColor);
+}
+
+.thirdColor {
+    background: var(--thirdBoxColor);
+}
+
+.fourthColor {
+    background: var(--fourthBoxColor);
+}
+
+.Top {
+    color: white;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.Bottom {
+    color: white;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
