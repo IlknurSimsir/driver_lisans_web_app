@@ -16,6 +16,7 @@ return new class extends Migration
             $table->Text('name', 64);
             $table->string('explanation');
             $table->string('activity');
+            $table->Text('icon', 64);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

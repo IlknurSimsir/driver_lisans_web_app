@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LessonModel;
+use App\Models\OrganisationModel;
 use Illuminate\Http\Request;
 use App\Models\TeacherModel;
 use Illuminate\Support\Facades\Log;
@@ -30,8 +31,8 @@ class TeacherController extends Controller
             try {
                 $file = $request->file('photo');
                 $filename = time() . '.' . $file->getClientOriginalExtension();
-                $path = $file->storeAs('public/images', $filename);
-                $teacher->photo = 'storage/images/' . $filename;
+                $file->storeAs('public/images', $filename);
+                $teacher->img = 'storage/images/' . $filename;
             } catch (\Exception $e) {
                 Log::error('Photo upload failed', ['error' => $e->getMessage()]);
                 return redirect()->back()->with('error', 'Fotoğraf yüklenirken bir hata oluştu.');
@@ -72,11 +73,9 @@ class TeacherController extends Controller
         if ($request->hasFile('photo')) {
             try {
                 $file = $request->file('photo');
-                // Dosya adında özel karakterleri temizleme
-                $filename = time() . '_' . preg_replace('/[^a-zA-Z0-9]/', '_', $file->getClientOriginalName());
-                $path = $file->storeAs('public/images', $filename);
-                Log::info('Photo uploaded', ['path' => $path]);
-                $teacher->photo = 'storage/images/' . $filename;
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('public/images', $filename);
+                $teacher->img = 'storage/images/' . $filename;
             } catch (\Exception $e) {
                 Log::error('Photo upload failed', ['error' => $e->getMessage()]);
                 return redirect()->back()->with('error', 'Fotoğraf yüklenirken bir hata oluştu.');
@@ -91,7 +90,9 @@ class TeacherController extends Controller
             Log::error('Teacher save failed', ['error' => $e->getMessage()]);
             return redirect()->back()->with('error', 'Eğitmen kaydedilirken bir hata oluştu.');
         }
-
+        $organisation = OrganisationModel::first();
+        $organisation->teacher_number = $organisation->teacher_number + 1;
+        $organisation->save();
         return redirect()->back()->with('success', 'Eğitmen başarıyla oluşturuldu!');
     }
 
@@ -110,7 +111,9 @@ class TeacherController extends Controller
             Log::error('Teacher delete failed', ['error' => $e->getMessage()]);
             return redirect()->back()->with('error', 'Eğitmen silinirken bir hata oluştu.');
         }
-
+        $organisation = OrganisationModel::first();
+        $organisation->teacher_number = $organisation->teacher_number - 1;
+        $organisation->save();
         return redirect()->back()->with('success', 'Eğitmen başarıyla silindi!');
     }
 }

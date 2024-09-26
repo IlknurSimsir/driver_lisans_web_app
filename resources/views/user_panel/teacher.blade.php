@@ -1,52 +1,53 @@
 @include('layouts.head')
 @extends('user_panel.part.tema')
 @section('content')
-
-<div>
-    <img src="img\mainPage.png" class="bannerImg" alt="">
-</div>
+@include('user_panel.part.banner', [
+'dynamicBannerText' => 'Eğitmenlerimiz',
+])
 <div class="container">
-    <div class="row">
+
+    <div class="row tacherInfoCard">
         <div class="col-lg-6 col-sm-12 col-md-6 p-3">
             <div class="card ">
                 <div class="titledark">
                     <h6>Teorik Ders Eğitmenlerimiz</h6>
                 </div>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea recusandae cupiditate quo sed, necessitatibus est culpa nulla reiciendis temporibus? Enim veniam, dolorum deleniti aut quas repellat inventore ducimus molestias explicabo?</p>
+                <p>{!! $user_side->teacherInfoTheoretical !!}</p>
             </div>
         </div>
 
         <div class="col-lg-6 col-sm-12 col-md-6 p-3">
             <div class="card ">
                 <div class="titledark">
-                    <h6>Teorik Ders Eğitmenlerimiz</h6>
+                    <h6>Pratik Ders Eğitmenlerimiz</h6>
                 </div>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea recusandae cupiditate quo sed, necessitatibus est culpa nulla reiciendis temporibus? Enim veniam, dolorum deleniti aut quas repellat inventore ducimus molestias explicabo?</p>
+                <p>{!! $user_side->teacherInfoPractical !!}</p>
             </div>
         </div>
     </div>
 
-    <div class="text-center  mt-3">
-        <div class="titlelight">
-            <h6>Eğitmenlerimiz</h6>
-        </div>
-    </div>
+    <x-title-card-component title="Eğitmenlerimiz" />
+
 
     <div class="row  mt-3">
-
-        <div class="col-lg-4 col-sm-12 col-md-4 ">
-            <div class="backgroundcard p-1">
+        {{-- foreah başlangıcı --}}
+        @foreach ($teachers as $teacher)
+        <div class="col-lg-3 col-sm-6 col-md-4 mb-4 ">
+            <div class="borderCard p-1">
                 <div class="cardwimage">
-                    <img src="img\mainPage.png" alt="teacherImg" class="teacherImg">
-                    <h6 class='mt-3 teacherName'>İsim Soyisim</h6>
+
+                    <img src="{{ asset($teacher->photo) }} " alt="teacherImg" class="teacherImg borderCard">
+                    <h6 class='mt-3 teacherName'>{{ $teacher->name }} {{ $teacher->surname }}</h6>
                     <div class="teacherStatus">
-                        <a href="tel:+900000000000" class="btn cardbtn ">Direksiyon Ders Eğitmeni</a>
+                        <a href="tel:+900000000000" class="btn cardbtn borderCard ">{{ $teacher->explanation }}</a>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
+        {{-- foreah bitişi --}}
     </div>
 
 

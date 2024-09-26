@@ -29,7 +29,9 @@ return new class extends Migration
             $table->string('x');
             $table->string('app_store');
             $table->string('play_store');
-            $table->string('working_hours');
+            $table->string('weekday');
+            $table->string('saturday');
+            $table->string('sunday');
             $table->string('maps');
             $table->integer('student_number');
             $table->integer('teacher_number');

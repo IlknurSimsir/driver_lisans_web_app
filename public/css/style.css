@@ -5,10 +5,9 @@
     --dark: #191C24;
     --aqua: #338dc9;
     --green: #225b25;
-    --fourthBoxColor: #22265b;
-    --thirdBoxColor: #879926;
-    --secondBoxColor: #225b25;
-    --firstBoxColor: #5b2222;
+    --softGray: #d4d4d4;
+    --darkGray: #3a3a3a;
+    --borderGray: #8383838b;
 
 }
 
@@ -89,6 +88,26 @@ hr {
     z-index: 999;
 }
 
+.userCard {
+    margin: 20px;
+}
+
+@media (max-width: 992px) {
+    .userCard {
+        margin: 60px 10px 10px 10px;
+    }
+}
+
+
+
+.sidebarLogo {
+
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* Gölgelendirme */
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
 .content {
     margin-left: 250px;
     min-height: 100vh;
@@ -131,7 +150,14 @@ hr {
 }
 
 
-/*** Navbar ***/
+/*** Admin Navbar ***/
+.search-form {
+    width: 100%;
+    /* Arama alanını daha geniş yapar */
+    max-width: 300px;
+    /* İsteğe bağlı olarak maksimum genişlik belirleyebilirsiniz */
+}
+
 .sidebar .navbar .navbar-nav .nav-link {
     padding: 7px 20px;
     color: var(--dark);
@@ -295,9 +321,54 @@ hr {
     text-align: end;
 }
 
+/* ---------------------------- */
+/* kullanıcı sayfası güncelleme sayfaları */
+.editFormBorder {
+    border: 2px solid var(--softGray);
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.editFormLabel {
+    text-align: center;
+
+}
+
+.editFormButtonBorder {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.editFormButton {
+    width: 200px;
+    background-color: var(--dark);
+    border: 1px solid var(--darkGray);
+}
+
+.editFormButton:hover {
+    background-color: var(--softGray);
+    color: var(--dark);
+    border: 1px solid var(--dark);
+}
+
+
+/* kullanıcı sayfası güncelleme sayfaları sonu*/
+
+
+/* ---------------------------- */
+/* ---------------------------- */
+/* ---------------------------- */
+/* ---------------------------- */
+
 
 /* USER PANEL CSS */
 
+/* ana sayfa  */
+.mainPageThreePart p {
+    min-height: 130px;
+}
+
+/* slider ayarları  */
 .sliderImg {
     width: 100%;
     height: 400px;
@@ -307,14 +378,27 @@ hr {
     display: block;
 }
 
-.bannerImg {
-    width: 100%;
-    height: 200px;
-    /* Yüksekliği belirleyin */
-    object-fit: cover;
-    /* Görselin kutuya sığarken bozulmadan kesilmesini sağlar */
-    display: block;
+/* slider ayarları sonu */
+/* ---------------------------- */
+/* banner ayarları */
+.bannerText {
+    height: auto;
+    width: calc(250px * 6);
+    /* 6 slaytın ekrana sığacak şekilde genişlik ayarı */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
+
+/* banner ayarları sonu */
+/* mainpage dışındaki sayfalarda kullanılıyordu, karışıklık çıkarmaması için kullanım dışı bırakıldı. */
+/* .bannerImg {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+} */
 
 .renks {
     color: rgb(255, 255, 255);
@@ -336,12 +420,15 @@ hr {
 }
 
 .cardwimage {
-    background-color: #FFFFFF;
-    margin: 2px 10px 2px 10px;
+    background-color: var(--light);
+    margin: 1px;
     text-align: start;
-    border-radius: 5px;
-    padding: 5px;
-    text-align: center;
+    border-radius: 7px;
+    padding: 15px;
+}
+
+.cardwimage a {
+    background-color: var(--dark);
 }
 
 
@@ -363,20 +450,28 @@ hr {
 }
 
 .titlelight {
-    margin-top: 15px;
-    margin-bottom: 13px;
+    margin: 15px 0px 13px 0px;
     display: inline-block;
-    width: fit-content;
+
     text-align: center;
-    box-shadow: 2px 0px 4px 3px rgb(197, 197, 197);
+    box-shadow: 2px 4px 3px rgb(197, 197, 197);
     border-radius: 0px;
-    background-color: #a5a5a5;
+    border: 1px solid var(--borderGray);
+    background-color: var(--softGray);
+    width: 400px;
 }
 
 .titlelight h6 {
     color: #000000;
     padding: 3px 10px;
     margin: 5px 0;
+}
+
+.card_content {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
 }
 
 .icon {
@@ -431,31 +526,36 @@ hr {
 
 .backgroundcard {
     background-color: green;
+    padding: 3px;
+    margin-bottom: 20px;
+    border-radius: 10px;
 
 }
 
 .cardbtn {
     border-radius: 20px;
     border: 2px solid var(--dark);
-    margin: 3px;
-    color: var(--dark);
+    margin-bottom: 5px;
+    color: var(--light);
 
 }
 
-.footer-clean {
-    padding: 50px 0;
-    background-color: #fff;
-    color: #4b4c4d;
+.footer-card {
+    padding: 25px 0;
+    background-color: var(--green);
+    color: var(--light);
 }
 
-.footer-clean h3 {
+.footer-card h3 {
     margin-top: 0;
     margin-bottom: 12px;
     font-weight: bold;
     font-size: 16px;
+    color: var(--light);
+
 }
 
-.footer-clean ul {
+.footer-card ul {
     padding: 0;
     list-style: none;
     line-height: 1.6;
@@ -463,34 +563,90 @@ hr {
     margin-bottom: 0;
 }
 
-.footer-clean ul a {
-    color: inherit;
+.footer-card ul a {
+    color: var(--light);
     text-decoration: none;
-    opacity: 0.8;
 }
 
-.footer-clean ul a:hover {
+.footer-card i {
+    color: var(--light);
+    text-decoration: none;
+
+}
+
+.footer-card ul a:hover {
     opacity: 1;
 }
 
-.footer-clean .item.social {
-    text-align: right;
+.social-icon {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    /* Bu değeri, ikonun yüksekliğiyle aynı yaparak dikey ortalama sağlıyoruz */
+    margin: 10px 5px 0px 5px;
+    transition: background-color 0.3s ease;
+    background-color: #f1f1f1;
+    vertical-align: middle;
+    /* Dikey ortalama için ekliyoruz */
+}
+
+.social-icon i {
+    display: inline-block;
+    font-size: 18px;
+    /* İkonun boyutunu ayarlayabilirsin */
+    line-height: inherit;
+    /* Line-height'in inherit ile aynı kalmasını sağlıyoruz */
+    vertical-align: middle;
+}
+
+/* Her bir sosyal medya ikonunun kendi rengi */
+.instagram {
+    background-color: #E1306C;
+}
+
+.facebook {
+    background-color: #1877F2;
+}
+
+.youtube {
+    background-color: #FF0000;
+}
+
+.twitter {
+    background-color: #1DA1F2;
+}
+
+.app-store {
+    background-color: #000000;
+}
+
+.play-store {
+    background-color: #34A853;
+}
+
+/* Hover efekti */
+.social-icon:hover {
+    opacity: 0.8;
+    /* Üzerine gelindiğinde hafif opaklık efekti */
 }
 
 @media (max-width:767px) {
-    .footer-clean .item {
+    .footer-card .item {
         text-align: center;
         padding-bottom: 20px;
     }
 }
 
 @media (max-width: 768px) {
-    .footer-clean .item.social {
+    .footer-card .item.social {
         text-align: center;
     }
 }
 
-.footer-clean .item.social>a {
+.footer-card .item.social>a {
     font-size: 24px;
     width: 40px;
     height: 40px;
@@ -505,23 +661,21 @@ hr {
     opacity: 0.75;
 }
 
-.footer-clean .item.social>a:hover {
-    opacity: 0.9;
-}
+
 
 @media (max-width:991px) {
-    .footer-clean .item.social>a {
+    .footer-card .item.social>a {
         margin-top: 40px;
     }
 }
 
 @media (max-width:767px) {
-    .footer-clean .item.social>a {
+    .footer-card .item.social>a {
         margin-top: 10px;
     }
 }
 
-.footer-clean .copyright {
+.footer-card .copyright {
     margin-top: 14px;
     margin-bottom: 0;
     font-size: 13px;
@@ -531,6 +685,7 @@ hr {
 .user-navbar {
     background-color: var(--green);
     z-index: 2;
+
     /* Arka plan rengini istediğiniz gibi ayarladınız */
 }
 
@@ -546,14 +701,9 @@ hr {
     /* Hover sırasında yazı rengi farklı olabilir */
 }
 
-.navbar-toggler {
-    border-color: white;
-    /* Hamburger menü ikonu rengini beyaz yapalım */
-}
 
-.navbar-toggler-icon {
-    background-color: white;
-    /* Hamburger menü ikonunun rengini beyaz yapalım */
+.navbar-toggler {
+    color: var(--light);
 }
 
 /* 1024px ve daha küçük ekranlar için medya sorgusu */
@@ -574,61 +724,6 @@ hr {
 }
 
 /* Navbar kısmı zaten mevcut, buna dokunmuyoruz */
-
-.navChannel {
-    position: absolute;
-    /* NavChannel div'i normal akıştan çıkar, yer kaplamaz */
-    top: 45px;
-    /* İkonların görselin üzerinde nereye yerleşeceğini belirler */
-    left: 50%;
-    transform: translateX(-50%);
-    /* Yatayda tam ortalamak için */
-    display: flex;
-    justify-content: center;
-    gap: 1px;
-    /* İkonlar arasındaki boşluk */
-    z-index: 1;
-    /* İkonların diğer içeriklerin üstünde görünmesi için */
-    width: auto;
-    /* Genişlik sabitlemesini kaldır */
-}
-
-.navSubChannel {
-    color: var(--light);
-    padding: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-
-}
-
-.splittedCard {
-    background-color: #ededed;
-    text-align: center;
-    padding-right: 0px;
-    padding-left: 0px;
-    color: #000000;
-    border-radius: 20px;
-}
-
-.firstColor {
-    background: var(--firstBoxColor);
-}
-
-.secondColor {
-    background: var(--secondBoxColor);
-}
-
-.thirdColor {
-    background: var(--thirdBoxColor);
-}
-
-.fourthColor {
-    background: var(--fourthBoxColor);
-}
 
 .Top {
     color: white;
@@ -747,16 +842,24 @@ hr {
     }
 }
 
-.lisance {
+.licence {
     background-color: #efefef;
     border-radius: 15px;
     border: 1px solid rgb(202, 202, 202);
     margin: 20px 10px 20px 10px;
-    padding: 20px;
+    padding: 8px;
     text-align: center;
+    width: 200px;
+    height: 300px;
 }
 
-.lisance img {
+.licence p {
+    font-size: 15px;
+    color: var(--dark);
+    text-align: start;
+}
+
+.licence img {
     border-radius: 15px;
     border: 1px solid rgb(202, 202, 202);
 }
@@ -774,16 +877,39 @@ hr {
 }
 
 .textVehicle {
+    background-color: var(--darkGray);
+    color: var(--light);
+    padding: 3px;
+}
 
-    padding: 5px;
-    background-color: var(--aqua);
+.textVehicle p {
+    margin-left: 5px;
+    margin-bottom: 0px !important;
+}
+
+
+.textVehicle h6 {
+    margin-left: 5px;
+    color: var(--light);
+}
+
+.borderedimage {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.borderedcard {
+    border-radius: 20px;
+    background-color: var(--softGray);
+
 }
 
 /* Teachers Part */
 
 .teacherImg {
     margin-top: 3px;
-    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 .teacherName {
@@ -794,6 +920,246 @@ hr {
     margin-bottom: 3px;
 }
 
+.tacherInfoCard p {
+    min-height: 200px;
+}
+
+/* Teachers Part End */
+/* ------------------------- */
+/* routes Part */
+.routeImg {
+    border-radius: 20px;
+    width: 100%;
+    height: 200px;
+}
+
+/* routes Part End*/
+/* ------------------------- */
+/* Hakkımızda Part */
+.splittedCard {
+    background-color: #ededed;
+    text-align: center;
+    padding-right: 0px;
+    padding-left: 0px;
+    color: #000000;
+    border-radius: 20px;
+}
+
+
+.firstColor {
+    background: #5b2222;
+}
+
+.firstMainColor {
+    background: #5b22227b;
+}
+
+.secondColor {
+    background: #225b25;
+}
+
+.secondMainColor {
+    background: #225b257e;
+}
+
+.thirdColor {
+    background: #879926;
+}
+
+.thirdMainColor {
+    background: #88992688;
+}
+
+.fourthColor {
+    background: #22265b;
+}
+
+.fourthMainColor {
+    background: #22265b85;
+}
+
+
+.splits i {
+    font-size: 25px;
+    color: var(--light);
+}
+
+.splitsMain {
+    background-color: #88992681;
+
+}
+
+
+/* Hakkımızda Part End */
+/* ------------------------- */
+/* ------------------------- */
+
 .cardMargin {
     margin: 0px 20px 0px 20px;
+}
+
+.borderCard {
+    border: 2px solid black;
+    border-radius: 20px;
+
+}
+
+/* ------------------------- */
+/* yarım daire css */
+.halfCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 0 0 60px 60px;
+    background-color: green;
+    color: var(--light);
+    text-align: center;
+}
+
+.halfCircle a {
+    color: var(--light);
+    /* İkonların boyutunu ayarlamak için */
+}
+
+.navChannel {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+
+
+.routeCard {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 25px;
+    border: 1px solid var(--darkGray);
+}
+
+/* yarım daire css sonu*/
+/* ------------------------- */
+
+.borderTop {
+    border-top: 3px solid black;
+}
+
+/* dersler sayfası karo tasarım */
+.diamond-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.top-triangle .triangle-image {
+    width: 300px;
+    height: auto;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.bottom-triangle {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--dark);
+    /* Yazı ve ikon rengi */
+    text-align: center;
+}
+
+.bottom-triangle .upper-part {
+    background-color: var(--softGray);
+    padding: 24px;
+}
+
+.bottom-triangle .lover-part {
+    background-color: #225b25 !important;
+}
+
+.lower-part {
+    padding: 30px;
+
+}
+
+.iconText {
+    font-size: 25px;
+    color: var(--light);
+
+}
+
+.mainDiamond {
+    display: flex;
+    justify-content: center;
+
+    gap: 60px;
+    /* Merkeze hizalama */
+
+}
+
+/* Tablet boyutları için gap değerini artırma */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .mainDiamond {
+        gap: 80px;
+        /* Tablet boyutunda boşluk miktarını artırdık */
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1400px) {
+    .mainDiamond {
+        gap: 80px;
+        /* Tablet boyutunda boşluk miktarını artırdık */
+    }
+}
+
+/* dersler sayfası karo tasarım sonu */
+/* ------------------------- */
+/* iletişim sayfası  */
+.comdiv {
+    text-align: center;
+    border-radius: 20px;
+    padding: 15px;
+    margin: 12px;
+}
+
+.topcom {
+    background-color: rgb(255, 221, 221);
+    border: 1px solid rgb(255, 201, 201);
+}
+
+.bottomcom {
+    background-color: rgb(193, 235, 255);
+    border: 1px solid rgb(181, 209, 255);
+}
+
+.comm_icon {
+    font-size: 30px;
+    color: var(--dark);
+}
+
+.comm_info a {
+    color: var(--darkGray);
+}
+
+.topcom h6 {
+    margin: 10px;
+}
+
+
+/* iletişim sayfası sonu */
+/* ------------------------- */
+/* sss sayfası başlangıcı*/
+.btnsss {
+    background-color: var(--green);
+    color: var(--light);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--green);
+    color: white;
 }

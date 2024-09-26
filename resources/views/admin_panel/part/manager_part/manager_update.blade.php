@@ -8,7 +8,6 @@
             <div class="modal-body">
                 <form id="editForm" action="{{ route('managerupdate') }}" method="POST">
                     @csrf
-                    <!-- @method('PUT') alanını kaldırıyoruz çünkü sadece POST kullanacağız -->
                     <input type="hidden" name="id" id="editId">
                     <div class="mb-3">
                         <label for="editName" class="form-label">İsim</label>

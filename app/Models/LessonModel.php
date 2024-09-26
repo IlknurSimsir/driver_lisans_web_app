@@ -13,6 +13,7 @@ class LessonModel extends Model
     protected $fillable = [
         'name',
         'explanation',
+        'icon',
         'activity',
     ];
 }

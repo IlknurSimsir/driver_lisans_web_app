@@ -26,6 +26,7 @@ class SignController extends Controller
     }
     public function resetPasswordEmail(Request $request)
     {
+        // Email validasyonunu kontrol edelim
         $val = FacadesValidator::make(
             [
                 "email" => $request->email,
@@ -34,40 +35,48 @@ class SignController extends Controller
                 "email" => 'required|email|exists:panel_user,email',
             ],
             [
-                "email.required" => 'Kullanıcı Bulunamadı',
-                "email.exists" => 'Kullanıcı Bulunamadı',
-                "email.email" => 'Geçersiz E-mail',
+                "email.required" => 'Email alanı boş olamaz',
+                "email.exists" => 'Bu email ile kayıtlı bir kullanıcı bulunamadı',
+                "email.email" => 'Geçersiz e-mail formatı',
             ]
         );
+
+        // Eğer validasyon başarısız olursa, hata mesajını session ile döndürelim
         if ($val->fails()) {
-            $hata = $val->errors()->first();
-            $durum = new stdClass();
-            $durum->State = 0; //hata olduğunda state 0 olur
-            $durum->Baslik = 'Hata'; //mesajın başlığı
-            $durum->Icerik = $hata; // 
-            return view('admin_panel.resetPasswordPage', $durum);
+            return redirect()->back()->with('error', $val->errors()->first());
         }
+
+        // Kullanıcı veritabanında mevcutsa işlemlere devam edelim
         $user = PanelUserModel::where('email', $request->email)->first();
-        $forgot_token = Hash('sha256', md5('fp'));
+
+        // Token oluşturma
+        $forgot_token = hash('sha256', md5('fp'));
         $user->forgot_token = $forgot_token;
         $user->save();
+
         $data = array('token' => $forgot_token);
+
         try {
+            // Mail gönderimi
             Mail::send(
                 'admin_panel.mail',
                 $data,
-                function ($message) {
+                function ($message) use ($user) {
                     $message->from(env('MAIL_FROM_ADDRESS'), 'İletişim');
-                    $message->subject("İLETİŞİM FORMU");
-                    $message->to('ilknursimsir205@gmail.com');
+                    $message->subject("Şifre Sıfırlama Talebi");
+                    $message->to($user->email); // Kullanıcının email adresine gönder
                 }
-
             );
         } catch (\Throwable $th) {
+            // Hata durumunda hatayı gösterebiliriz
             dd($th->getMessage());
         }
+
+        // Başarılı mail gönderimi sonrası bilgilendirme ekranı
         return view('admin_panel.sendMailInfo');
     }
+
+
     public function newPassword($token)
     {
         $val = FacadesValidator::make(

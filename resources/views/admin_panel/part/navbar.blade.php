@@ -1,14 +1,21 @@
 <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-    <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-        <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-    </a>
+    <!-- Sol kısım -->
+
     <a href="#" class="sidebar-toggler flex-shrink-0">
         <i class="fa fa-bars"></i>
     </a>
-    <form class="d-none d-md-flex ms-4">
-        <input class="form-control border-0" type="search" placeholder="Search">
+    <form class="d-none d-md-flex ms-4 search-form">
+        <input class="form-control border-0" type="search" placeholder="Arama yap">
     </form>
-    <div class="navbar-nav align-items-center ms-auto">
+
+    <div class="text-center"> <a href="/patron" class="text-center">
+            <img src="{{ Storage::url($companyLogo) }}" alt="{{ $companyName }} logo" width="25%">
+        </a></div>
+    <!-- Ortadaki logo -->
+
+
+    <!-- Sağ kısım -->
+    <div class="navbar-nav align-items-center ms-auto col-sm-4 col-lg-4">
         <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <i class="fa fa-envelope me-lg-2"></i>

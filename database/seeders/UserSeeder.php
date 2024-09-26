@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\PanelUserModel;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class UserSeeder extends Seeder
         $data = [
             'name' => 'ilknur',
             'surname' => 'f',
-            'phone' => '5615',
+            'phone' => Str::random(10),
             'email' => 'ilknursimsir@gmail.com',
             'password' => '123456',
 

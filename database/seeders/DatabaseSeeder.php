@@ -19,8 +19,12 @@ class DatabaseSeeder extends Seeder
             OrganisationSeeder::class,
             LessonSeeder::class,
             CourseStatusSeeder::class,
-            LicenseTypeSeeder::class,
+            LicenceTypeSeeder::class,
             StudentSeeder::class,
+            UserSideSeeder::class,
+            VehicleSeeder::class,
+            TeacherSeeder::class,
+            SubstationSeeder::class,
         ]);
     }
 }

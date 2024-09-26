@@ -5,7 +5,8 @@
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Yükleniyor...</span>
             </div>
@@ -19,21 +20,24 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="/admin_index">
-                                <div class="text-center"> <img src="{{ Storage::url($companyLogo) }}" alt="{{ $companyName }} logo" width="30%"></div>
+                            <a href="/patron">
+                                <div class="text-center"> <img src="{{ Storage::url($companyLogo) }}"
+                                        alt="{{ $companyName }} logo" width="50%"></div>
                             </a>
                         </div>
                         <div>
                             <h3>Giriş Yap</h3>
                         </div>
-                        <form action="{{route('signInPost')}}" method="post">
+                        <form action="{{ route('signInPost') }}" method="post">
                             @csrf
                             <div class="form-floating mb-3">
-                                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <input type="email" name="email" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com">
                                 <label for="floatingInput">Mail Adresi</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <input type="password" name="password" class="form-control" id="floatingPassword"
+                                    placeholder="Password">
                                 <label for="floatingPassword">Şifre</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -41,7 +45,7 @@
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Oturumu açık tut</label>
                                 </div>
-                                <a href="{{route('resetPasswordPage')}}">Şifremi Unuttum</a>
+                                <a href="{{ route('resetPasswordPage') }}">Şifremi Unuttum</a>
                             </div>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Giriş Yap</button>
                         </form>

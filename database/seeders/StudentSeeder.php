@@ -27,18 +27,6 @@ class StudentSeeder extends Seeder
 
             ],
             [
-                'name' => 'defaultOrnek2',
-                'surname' => 'studentOrnek2',
-                'phone' => '05555555551345Ornek2',
-                'email' => 'default_studentOrnek2@gmail.com',
-                'password' => '123456Ornek2',
-                'license_type' => '1',
-                'class_id' => '1',
-                'course_status' => '1',
-                'token' => '0',
-
-            ],
-            [
                 'name' => 'default2',
                 'surname' => 'student2',
                 'phone' => '05555555552',

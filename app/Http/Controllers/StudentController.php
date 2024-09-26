@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourseStatusModel;
-use App\Models\LicenseTypeModel;
+use App\Models\LicenceTypeModel;
+use App\Models\OrganisationModel;
 use Illuminate\Http\Request;
 use App\Models\StudentModel;
 
@@ -13,7 +14,8 @@ class StudentController extends Controller
     {
         $student = StudentModel::all();
         $course = CourseStatusModel::all();
-        $license = LicenseTypeModel::all();
+        $license = LicenceTypeModel::all();
+
         return view("admin_panel.student", compact('student', 'course', 'license'));
     }
     public function update(Request $request)
@@ -45,6 +47,9 @@ class StudentController extends Controller
         $student->license_type = $request->license_type;
         $student->class_id = $request->class_id;
         $student->save();
+        $organisation = OrganisationModel::first();
+        $organisation->student_number = $organisation->student_number + 1;
+        $organisation->save();
 
         return redirect()->back()->with('success', 'Öğrenci başarıyla oluşturuldu!');
     }
@@ -58,7 +63,9 @@ class StudentController extends Controller
         }
 
         $student->delete();
-
+        $organisation = OrganisationModel::first();
+        $organisation->student_number = $organisation->student_number - 1;
+        $organisation->save();
         return redirect()->back()->with('success', 'Öğrenci başarıyla silindi!');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\RoutesController;
+use App\Http\Controllers\Admin\UserSideController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignController;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +19,17 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\UserSide\MainPageController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\Admin\VehicleController;
+use App\Http\Controllers\Admin\adminSSSController;
 use App\Http\Controllers\UserSide\AboutUsController;
-use App\Http\Controllers\UserSide\DriverLisansController;
+use App\Http\Controllers\UserSide\CommunicationController;
+use App\Http\Controllers\UserSide\DriverLicenceController;
+use App\Http\Controllers\UserSide\RouteController;
 use App\Http\Controllers\UserSide\TeacherController as UserSideTeacherController;
-use App\Http\Controllers\UserSide\VehicleController;
+use App\Http\Controllers\UserSide\VehiclesController;
+use App\Http\Controllers\UserSide\LessonsController;
+use App\Http\Controllers\UserSide\SSSController;
+
 
 // Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
@@ -37,13 +46,19 @@ Route::post('/newPasswordPost', [SignController::class, 'newPasswordPost'])->nam
 /*User Panel Routes*/
 Route::get('/', [MainPageController::class, 'mainPage'])->name("mainPage");
 Route::get('/aboutUs', [AboutUsController::class, 'aboutUs'])->name("aboutUs");
-Route::get('/driverLisans', [DriverLisansController::class, 'driverLisans'])->name("driverLisans");
+Route::get('/driverLicence', [DriverLicenceController::class, 'driverLicence'])->name("driverLicence");
 Route::get('/teachers', [UserSideTeacherController::class, 'teachers'])->name("teachers");
-Route::get('/vehicle', [VehicleController::class, 'vehicle'])->name("vehicle");
+Route::get('/vehicles', [VehiclesController::class, 'vehicles'])->name("vehicles");
+Route::get('/route', [RouteController::class, 'route'])->name("route");
+Route::get('/lessons', [LessonsController::class, 'lessons'])->name("lessons");
+Route::get('/communication', [CommunicationController::class, 'communication'])->name("communication");
+Route::get('/sss', [SSSController::class, 'sss'])->name("sss");
+Route::post('/reachUsEmail', [MainPageController::class, 'reachUsEmail'])->name("reachUsEmail");
+
 Route::middleware(['auth', 'log'])->group(function () {
 
     //Route::get('/', [AdminController::class, 'admin_index'])->name('admin_index');
-    Route::get('/admin_index', [AdminController::class, 'admin_index'])->name('admin_index');
+    Route::get('/patron', [AdminController::class, 'admin_index'])->name('admin_index');
     /*Duyuru */
     Route::post('/announcementupdate', [AnnouncementController::class, 'update'])->name('announcementupdate');
     Route::post('/announcementdelete', [AnnouncementController::class, 'delete'])->name('announcementdelete');
@@ -66,6 +81,16 @@ Route::middleware(['auth', 'log'])->group(function () {
     Route::post('/substationadd', [SubstationController::class, 'add'])->name('substationadd');
     Route::post('/substationupdate', [SubstationController::class, 'update'])->name('substationupdate');
     Route::post('/substationdelete', [SubstationController::class, 'delete'])->name('substationdelete');
+    /*Araç */
+    Route::get('/vehicle', [VehicleController::class, 'vehicle'])->name('vehicle');
+    Route::post('/vehicleadd', [VehicleController::class, 'add'])->name('vehicleadd');
+    Route::post('/vehicleupdate', [VehicleController::class, 'update'])->name('vehicleupdate');
+    Route::post('/vehicledelete', [VehicleController::class, 'delete'])->name('vehicledelete');
+    /*Rota */
+    Route::get('/routes', [RoutesController::class, 'routes'])->name('routes');
+    Route::post('/routeadd', [RoutesController::class, 'add'])->name('routeadd');
+    Route::post('/routeupdate', [RoutesController::class, 'update'])->name('routeupdate');
+    Route::post('/routedelete', [RoutesController::class, 'delete'])->name('routedelete');
     /*Önemli bilgiler */
     Route::post('/importand_informationupdate', [ImportandInformationController::class, 'update'])->name('importand_informationupdate');
     Route::post('/importand_informationdelete', [ImportandInformationController::class, 'delete'])->name('importand_informationdelete');
@@ -109,6 +134,36 @@ Route::middleware(['auth', 'log'])->group(function () {
     Route::post('/teacherupdate', [TeacherController::class, 'update'])->name('teacherupdate');
     Route::post('/teacherdelete', [TeacherController::class, 'delete'])->name('teacherdelete');
     Route::post('/teacheradd', [TeacherController::class, 'add'])->name('teacheradd');
+    /*Araç */
+    Route::get('/vehicle', [VehicleController::class, 'vehicle'])->name('vehicle');
+    Route::post('/vehicleupdate', [VehicleController::class, 'update'])->name('vehicleupdate');
+    Route::post('/vehicledelete', [VehicleController::class, 'delete'])->name('vehicledelete');
+    Route::post('/vehicleadd', [VehicleController::class, 'add'])->name('vehicleadd');
+    /*SSS */
+    Route::get('/adminSSS', [adminSSSController::class, 'sss'])->name('adminSSS');
+    Route::post('/adminSSSupdate', [adminSSSController::class, 'update'])->name('adminSSSupdate');
+    Route::post('/adminSSSdelete', [adminSSSController::class, 'delete'])->name('adminSSSdelete');
+    Route::post('/adminSSSadd', [adminSSSController::class, 'add'])->name('adminSSSadd');
+
+
+    /*ÖNYÜZ SAYFALARI*/
+
+    /*Önyüz anasayfa*/
+    Route::get('/editMainPage', [UserSideController::class, 'editMainPage'])->name('editMainPage');
+    Route::post('/editMainPagePost', [UserSideController::class, 'editMainPagePost'])->name('editMainPagePost');
+    /*Önyüz hakkımızda*/
+    Route::get('/editAboutUs', [UserSideController::class, 'editAboutUs'])->name('editAboutUs');
+    Route::post('/editAboutUsPost', [UserSideController::class, 'editAboutUsPost'])->name('editAboutUsPost');
+    /*Önyüz sürücü belgesi*/
+    Route::get('/editDriverLicence', [UserSideController::class, 'editDriverLicence'])->name('editDriverLicence');
+    Route::post('/editDriverLicencePost', [UserSideController::class, 'editDriverLicencePost'])->name('editDriverLicencePost');
+    /*Önyüz Eğitmen*/
+    Route::get('/editTeacher', [UserSideController::class, 'editTeacher'])->name('editTeacher');
+    Route::post('/editTeacherPost', [UserSideController::class, 'editTeacherPost'])->name('editTeacherPost');
+    /*Önyüz Araçlar*/
+    Route::get('/editVehicle', [UserSideController::class, 'editVehicle'])->name('editVehicle');
+    Route::post('/editVehiclePost', [UserSideController::class, 'editVehiclePost'])->name('editVehiclePost');
+
     /* çıkış işlemleri */
     Route::get('/signout', [SignController::class, 'signout'])->name('signout');
 });
